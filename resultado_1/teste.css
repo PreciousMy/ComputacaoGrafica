@@ -1,0 +1,39 @@
+body {
+  background: #e2e2e2;
+}
+
+h2 {
+  font-size: 110%;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.cols {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 16px;
+}
+
+.camera {
+    border: 1px solid #929292;
+    padding: 4px;
+    margin: 4px;
+    background: white;  
+}
+
+.camera .cam_header {
+  margin-left: 16px;
+  font-weight: bold;
+  font-family: monospace;
+  margin-bottom: 4px;
+}
+
+.camera .cam_mat {
+  font-family: monospace;
+  font-size: 11px;
+  margin-left: 16px;
+  color: #604c4c;
+  margin-bottom: 8px;
+  white-space: pre;
+}

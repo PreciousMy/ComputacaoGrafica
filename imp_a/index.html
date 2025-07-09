@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Implementacao A</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='teste.css'>
+</head>
+
+<body>
+  <div class="cols">
+    <canvas id="tela" width="400" height="400"></canvas>
+
+    <div>
+      <h2>Controle</h2>
+      <fieldset>
+        <label>Vértice:</label>
+        <select id="vertice">
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>Ângulo:</label>
+        <input type="number" id="angulo" value="0" step="5">
+      </fieldset>
+    </div>
+  </div>
+
+  <script src="../lib_webgpu.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

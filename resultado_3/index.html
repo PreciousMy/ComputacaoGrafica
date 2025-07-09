@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>B - Resultado 3</title>
+</head>
+<body>
+  <canvas id="tela" width="640" height="480"></canvas>
+  <hr>
+  <fieldset>
+    <legend>Controle da Luz 1</legend>
+    Pos: 
+    <input type="number" id="l1_px" step="0.1">
+    <input type="number" id="l1_py" step="0.1">
+    <input type="number" id="l1_pz" step="0.1">
+    <br> Amb(RGB):
+    <input type="number" id="l1_ar" min="0" max="1" step="0.05">
+    <input type="number" id="l1_ag" min="0" max="1" step="0.05">
+    <input type="number" id="l1_ab" min="0" max="1" step="0.05">
+    <br> Dif(RGB):
+    <input type="number" id="l1_dr" min="0" max="1" step="0.05">
+    <input type="number" id="l1_dg" min="0" max="1" step="0.05">
+    <input type="number" id="l1_db" min="0" max="1" step="0.05">
+    <br> Spec(RGB):
+    <input type="number" id="l1_sr" min="0" max="1" step="0.05">
+    <input type="number" id="l1_sg" min="0" max="1" step="0.05">
+    <input type="number" id="l1_sb" min="0" max="1" step="0.05">
+  </fieldset>
+
+  <script src="../lib_webgpu.min.js"></script>
+  <script src="teste.js"></script>
+</body>
+</html>

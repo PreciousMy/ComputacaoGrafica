@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Stardoom</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    html, body {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: hidden; /* Evita barras de rolagem */
+    }
+
+    body {
+      /* Usa grid para centralizar o canvas facilmente */
+      display: grid;
+      place-items: center;
+      background-color: #000; /* Cor de fundo caso o vídeo demore a carregar */
+    }
+    
+  #tela {
+        background-image: url('data/paisagem_remasterizado.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    #video {
+      /* Posiciona o vídeo fixo em relação à janela do navegador */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      /* Garante que o vídeo cubra toda a tela sem distorcer, cortando o excesso */
+      object-fit: cover;
+
+      /* Coloca o vídeo atrás de todos os outros elementos */
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="tela" width="1000" height="600"></canvas>
+  <video id="video" autoplay loop muted>
+    <source src="data/fundo.webm" type="video/webm">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+  <script src="../lib_webgpu.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
+
+

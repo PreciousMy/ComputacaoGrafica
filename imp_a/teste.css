@@ -1,0 +1,25 @@
+canvas {
+  display: block;
+  border: 1px solid #00000040;
+  background: linear-gradient(#ebebeb, #f3ffc0);
+}
+
+h2 {
+  margin: 0 0 16px 0;
+}
+
+fieldset {
+  border: 0;
+}
+
+input,
+select {
+  padding: 4px;
+  width: 5em;
+}
+
+.cols {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}

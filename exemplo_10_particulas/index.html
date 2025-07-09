@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Sistema de Partículas</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='teste.css'>
+</head>
+
+<body>
+  <div class="cols">
+    <canvas id="tela" width="640" height="480"></canvas>
+
+    <div id="controles">
+      <fieldset>
+        <label>Partículas agora:</label>
+        <label id="n_agora">0</label>
+      </fieldset>
+      <fieldset>
+        <label>Max Partículas:</label>
+        <input type="number" id="max_particles" oninput="upd()" value="50">
+      </fieldset>
+      <fieldset>
+        <label>Cores:</label>
+        <div class="cols">
+          <select id="cores" onchange="upd()">
+          </select>
+          <label class="label_check" for="cores_reverso">
+            <input type="checkbox" id="cores_reverso" onchange="upd()">Reverso
+          </label>
+        </div>
+        <label></label>
+        <div id="cores_pal">
+        </div>
+      </fieldset>
+      <fieldset>
+        <label>Textura:</label>
+        <select id="mt" onchange="upd()">
+        </select>
+      </fieldset>
+      <fieldset>
+        <label>Blend Mode:</label>
+        <select id="blend_mode" onchange="upd()">
+          <option value="default">0. Default</option>
+          <option value="additive" selected>1. Additive</option>
+        </select>
+      </fieldset>
+      <fieldset>
+        <label>Shader - color params:</label>
+        <div class="cols vcenter">
+          RGB:
+          <select id="color_param_x" onchange="upd()">
+            <option value="0">0. V</option>
+            <option value="1">1. T</option>
+            <option value="2">2. Un</option>
+
+            <option value="3">3. V * Un</option>
+            <option value="4" selected>4. T * Un</option>
+            <option value="5">5. T * V</option>
+
+            <option value="6">6. V + Un</option>
+            <option value="7">7. T + Un</option>
+            <option value="8">8. T + V</option>
+          </select>
+
+          A:
+          <select id="color_param_y" onchange="upd()">
+            <option value="0">0. V</option>
+            <option value="1">1. T</option>
+            <option value="2">2. Un</option>
+
+            <option value="3">3. V * Un</option>
+            <option value="4">4. T * Un</option>
+            <option value="5">5. T * V</option>
+
+            <option value="6">6. V + Un</option>
+            <option value="7">7. T + Un</option>
+            <option value="8">8. T + V</option>
+
+            <option value="9" selected>9. Tr</option>
+            <option value="10">10. Trgb</option>
+          </select>
+        </div>
+      </fieldset>
+      <hr>
+      <fieldset>
+        <label>Posição inicial:</label>
+        <div class="cols">
+          <input type="number" id="pos_x" step="0.1" value="0.0" onchange="upd()">
+          <input type="number" id="pos_y" step="0.1" value="0.0" onchange="upd()">
+          <input type="number" id="pos_z" step="0.1" value="0.0" onchange="upd()">
+        </div>
+      </fieldset>
+      <fieldset>
+        <label>Velocidade:</label>
+        <div class="cols">
+          <input type="number" id="vel_x" step="0.1" value="0.0" onchange="upd()">
+          <input type="number" id="vel_y" step="0.1" value="1.0" onchange="upd()">
+          <input type="number" id="vel_z" step="0.1" value="0.0" onchange="upd()">
+        </div>
+      </fieldset>
+      <fieldset>
+        <label>Variação direção:</label>
+        <input type="number" id="vel_variation" oninput="upd()" step="0.1" value="1.5">
+      </fieldset>
+      <fieldset>
+        <label>Animação - velocidade:</label>
+        <input type="number" id="speed" oninput="upd()" step="0.1" value="0.5">
+      </fieldset>
+      <fieldset>
+        <label>Taxa de Emissão:</label>
+        <input type="number" id="emission_rate" oninput="upd()" value="10">
+      </fieldset>
+      <fieldset>
+        <label>Conserv. Velocidade:</label>
+        <input type="number" id="vel_factor" oninput="upd()" step="0.01" value="0.99">
+      </fieldset>
+      <fieldset>
+        <label>Random Vida útil:</label>
+        <div class="cols vcenter">
+          <input type="number" id="age_min" step="0.5" value="1.0" oninput="upd()">
+          <label>até</label>
+          <input type="number" id="age_max" step="0.5" value="2.0" oninput="upd()">
+        </div>
+      </fieldset>
+      <fieldset>
+        <label>Random Rotação:</label>
+        <div class="cols vcenter">
+          <input type="number" id="ang_start_random" step="15" value="360" oninput="upd()">
+          <label>vel.:</label>
+          <input type="number" id="ang_vel_random" step="5" value="50" oninput="upd()">
+        </div>
+      </fieldset>
+      <fieldset>
+        <label>Size:</label>
+        <div class="cols vcenter">
+          <input type="number" id="size_start" oninput="upd()" step="0.1" value="0.5">
+          <label>até</label>
+          <input type="number" id="size_end" oninput="upd()" step="0.1" value="0.0">
+        </div>
+      </fieldset>
+      <fieldset>
+        <label>Turbulência:</label>
+        <input type="number" id="turbulence_strength" oninput="upd()" step="0.5" value="0.0">
+      </fieldset>
+      <fieldset>
+        <label>Atração / Repulsão:</label>
+        <input type="number" id="attraction_repulsion_strength" oninput="upd()" step="0.5" value="0.0">
+      </fieldset>
+
+      <hr>
+
+      <fieldset>
+        <label></label>
+        <div class="cols vcenter">
+          <button onclick="emitir()">Emitir</button>
+          <label for="emitindo" class="label_check">
+            <input type="checkbox" id="emitindo" checked onchange="upd()">Emitindo
+          </label>
+        </div>
+      </fieldset>
+    </div>
+
+  </div>
+
+  <div id="barra" class="cols">
+    <button onclick="tema(0)">Light</button>
+    <button onclick="tema(1)">Dark</button>
+    <button onclick="tema(2)">Default</button>
+  </div>
+
+  <script src="../lib_webgpu.min.js"></script>
+  <script src="teste.js"></script>
+</body>
+
+</html>
